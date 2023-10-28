@@ -69,6 +69,26 @@ namespace Exchange {
         virtual uint32_t Unregister(INotification*) = 0;
 
         // @property
+        // @brief Current Display connection status
+        // @param Connected: true/flase
+        virtual uint32_t IsDisplayConnected (bool& connected/* @out */) const = 0;
+
+        // @property
+        // @brief HDCP complaint status
+        // @param hdcpcompliant: true/flase
+        virtual uint32_t IsHDCPCompliant (bool& hdcpcompliant/* @out */) const = 0;
+
+        // @property
+        // @brief Current HDCP enabled status
+        // @param hdcpenable: true/flase
+        virtual uint32_t IsHDCPEnabled (bool& hdcpenable/* @out */) const = 0;
+
+        // @property
+        // @brief HDCP reason
+        // @param reason: HDCP reason code
+        virtual uint32_t HDCPReason(uint32_t& reason /* @out */) const = 0;
+
+        // @property
         // @brief Current audio passthrough status on HDMI
         // @param passthru: enabled/disabled
         virtual uint32_t IsAudioPassthrough (bool& passthru /* @out */) const = 0;
@@ -112,6 +132,15 @@ namespace Exchange {
         virtual uint32_t HDCPProtection (const HDCPProtectionType value) = 0;
 
         // @property
+        // @brief HDCP protocol supported by host device
+        // @param value: protocol
+        virtual uint32_t HostHDCPProtection (HDCPProtectionType& value /* @out */) const = 0;
+
+        // @property
+        // @brief HDCP protocol supported by connected device
+        // @param value: protocol
+        virtual uint32_t ReceiverHDCPProtection (HDCPProtectionType& value /* @out */) const = 0;
+
         // @brief Video output port on the STB used for connection to TV
         // @param name: video output port name
         virtual uint32_t PortName (string& name /* @out */) const = 0;
@@ -247,3 +276,4 @@ namespace Exchange {
     };
 }
 }
+
